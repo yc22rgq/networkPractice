@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 
 sys.setrecursionlimit(10000000)
-df = pd.read_csv('books.csv')
+df = pd.read_csv('books.csv', nrows=200)
 
 df.fillna('', inplace=True)
 
@@ -13,7 +13,7 @@ df['text'] = df['title'] + ' ' + df['authors'] + ' ' + df['language_code']
 vectorizer = TfidfVectorizer(stop_words='english')
 tfidf_matrix = vectorizer.fit_transform(df['text'])
 
-knn = NearestNeighbors(n_neighbors=6, algorithm='brute', metric='cosine')
+knn = NearestNeighbors(n_neighbors=5, algorithm='brute', metric='cosine')
 knn.fit(tfidf_matrix)
 
 
