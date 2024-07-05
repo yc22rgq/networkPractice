@@ -25,4 +25,6 @@ def get_recommendations(title):
     return df['title'].iloc[indices[0]].tolist()
 
 
-print(get_recommendations('La tía Julia y el escribidor'))
+recommendations = get_recommendations('La tía Julia y el escribidor')
+for rec in recommendations:
+    print(rec)
